@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+	<script type="text/javascript" src="/js/admin.js"></script>
+</head>
+
+<body>
+<div id="editor">
+	<h1>Editor</h1>
+	<form method="post" enctype="multipart/form-data">
+		
+		<label for="type-category">Categoría</label><input type="radio" name="type" value="category" id="type-category" checked>
+		<label for="type-product">Producto</label><input type="radio" name="type" value="product" id="type-product">
+		<label for="name">Nombre: </label><input type="text" name="name" id="name" required><br>
+		<label for="description">Descripción: </label><textarea type="text" name="description" id="description"></textarea><br>
+		<label for="image">Imagen: </label><input type="file" id="image" name="image">
+		<label for="price">Precio: </label><input type="number" id="price" name="price" min="0" step="0.1" value="1" disabled>
+		<label for="category">Categoría: </label>
+		<select id="sel-categories" id="category" name="category" disabled>
+			{% for c in products %}
+			<option value="{{products[c].key}}">{{c}}</option>
+			{% endfor %}
+		</select><br>
+		<button type="submit">Insertar</button>
+	</form>
+</div><!-- editor -->
+
+<div id="tree">
+	<h1> Lista de productos</h1>
+	{% for c in products %}
+	<div class="category" id="{{products[c].key}}">
+		<h2 class="name">{{c}}</h2>
+		<div class="edit category">Editar</div>
+		<div class="delete category">Borrar</div>
+		<img src="/img?img_id={{products[c].key}}">
+		<div class="description">{{products[c].description}}</div>
+		{% for p in products[c]["products"] %}
+		<div class="product">
+			<h3 class="name">{{p}}</h3>
+			<div class="edit product">Editar</div>
+			<div class="delete product">Borrar</div>
+			<img src="/img?img_id={{products[c].products[p].key}}">
+			<div class="description">{{products[c].products[p].description}}</div>
+			<div class="price">{{products[c].products[p].price}}</div>
+		</div>
+		{% endfor %}
+	</div><!--category-->
+	{% endfor %}
+</div> <!-- tree -->
+
+</body>
+</html>

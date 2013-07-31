@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Dosis:400,700);
+
+body {
+	font-family: 'Dosis', sans-serif;
+	width: 800px;
+}
+#tree {
+	width: 300px;
+	float: left;
+	border: 1px dotted black;
+	height: 500px;
+	overflow-y: scroll;
+}
+.category {
+	border-top: 1px solid black;
+	cursor: pointer;
+	padding: 5px;
+}
+.category img {
+	width: 100px;
+	height: auto;
+	float: right;
+
+}
+.product {
+	border: 1px dotted black;
+	margin-left: 20px;
+	padding: 5px;
+	margin-top: 5px;
+}
+.product img {
+	width: 100px;
+	height: auto;
+}
+.edit, .delete {
+	border: 1px solid black;
+	width: 50px;
+	font-size: .8em;
+	padding: 1px;
+	margin: 0px 2px 5px 0px;
+	display: inline-block;
+}
+.edit:hover, .delete:hover {
+	background-color: black;
+	color: white;
+}
+.price {
+	background-color: red;
+	color: white;
+	width: 30px;
+	padding: 3px;
+}
+#editor {
+	width: 480px;
+	float: right;
+	font-size: 20px;
+}
+
+label {
+	width: 150px;
+	display: inline-block;
+}
+input, textarea {
+	width: 300px;
+}
+textarea {
+	height: 100px;
+}
